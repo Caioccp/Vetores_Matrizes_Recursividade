@@ -4,45 +4,31 @@ class Program
 {
     static void Main(string[] args)
     {
-        string[] alunos = new string[5];
-        double[,] notas = new double[5, 3];
+        int[,] presenca = new int[3, 5];
 
-        for (int i = 0; i < 5; i++)
+        for (int aluno = 0; aluno < 3; aluno++)
         {
-            Console.Write($"Digite o nome do {i + 1}º aluno: ");
-            alunos[i] = Console.ReadLine()!;
+            Console.WriteLine($"Aluno {aluno + 1}");
 
-            for (int j = 0; j < 3; j++)
+            for (int dia = 0; dia < 5; dia++)
             {
-                Console.Write($"Digite a {j + 1}ª nota: ");
-                notas[i, j] = double.Parse(Console.ReadLine()!);
+                Console.Write($"Dia {dia + 1} (1 = Presente / 0 = Ausente): ");
+                presenca[aluno, dia] = int.Parse(Console.ReadLine()!);
             }
+
+            Console.WriteLine();
         }
 
-        Console.WriteLine();
-
-        for (int i = 0; i < 5; i++)
+        for (int aluno = 0; aluno < 3; aluno++)
         {
-            double media = (notas[i, 0] + notas[i, 1] + notas[i, 2]) / 3;
-            string situacao;
+            int total = 0;
 
-            if (media >= 7)
+            for (int dia = 0; dia < 5; dia++)
             {
-                situacao = "Aprovado";
-            }
-            else if (media >= 5)
-            {
-                situacao = "Recuperação";
-            }
-            else
-            {
-                situacao = "Reprovado";
+                total += presenca[aluno, dia];
             }
 
-            Console.WriteLine($"Aluno: {alunos[i]}");
-            Console.WriteLine($"Média: {media:F2}");
-            Console.WriteLine($"Situação: {situacao}");
-            Console.WriteLine();
+            Console.WriteLine($"Aluno {aluno + 1}: {total} presenças");
         }
     }
 }
