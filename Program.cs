@@ -4,21 +4,24 @@ class Program
 {
     static void Main(string[] args)
     {
-        Console.Write("Digite um número: ");
+        Console.Write("Digite a posição: ");
         int numero = int.Parse(Console.ReadLine()!);
 
-        ContagemRegressiva(numero);
+        Console.WriteLine($"Resultado: {Fibonacci(numero)}");
     }
 
-    static int ContagemRegressiva(int n)
+    static int Fibonacci(int n)
     {
-        Console.WriteLine(n);
-
-        if (n <= 0)
+        if (n == 0)
         {
             return 0;
         }
 
-        return ContagemRegressiva(n - 1);
+        if (n == 1)
+        {
+            return 1;
+        }
+
+        return Fibonacci(n - 1) + Fibonacci(n - 2);
     }
 }
