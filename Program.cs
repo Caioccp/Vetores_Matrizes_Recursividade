@@ -7,16 +7,18 @@ class Program
         Console.Write("Digite um número: ");
         int numero = int.Parse(Console.ReadLine()!);
 
-        Console.WriteLine($"Soma: {SomarAteN(numero)}");
+        ContagemRegressiva(numero);
     }
 
-    static int SomarAteN(int n)
+    static int ContagemRegressiva(int n)
     {
-        if (n > 1)
+        Console.WriteLine(n);
+
+        if (n <= 0)
         {
-            return n + SomarAteN(n - 1);
+            return 0;
         }
 
-        return n;
+        return ContagemRegressiva(n - 1);
     }
 }
