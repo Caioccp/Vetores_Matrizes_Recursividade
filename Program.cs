@@ -5,7 +5,7 @@ class Program
     static void Main(string[] args)
     {
         int[,] matriz = new int[3, 3];
-        int soma = 0;
+        int maior = int.MinValue;
 
         for (int linha = 0; linha < 3; linha++)
         {
@@ -13,10 +13,14 @@ class Program
             {
                 Console.Write($"Digite o valor [{linha},{coluna}]: ");
                 matriz[linha, coluna] = int.Parse(Console.ReadLine()!);
-                soma += matriz[linha, coluna];
+
+                if (matriz[linha, coluna] > maior)
+                {
+                    maior = matriz[linha, coluna];
+                }
             }
         }
 
-        Console.WriteLine($"\nSoma dos valores: {soma}");
+        Console.WriteLine($"\nMaior valor: {maior}");
     }
 }
